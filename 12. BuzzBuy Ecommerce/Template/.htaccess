@@ -1,0 +1,23 @@
+RewriteEngine on
+
+#RewriteCond %{SERVER_PORT} 81 
+#RewriteRule ^(.*)$ http://www.site_adi.com/$1 [R,L]
+
+#RewriteCond %{HTTP_HOST} ^site_adi.com. [NC]
+#RewriteRule ^(.*)$ http://www.site_adi.com/$1 [L,R=301,NC]
+
+
+#Deleting all .php adding from Domain
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ $1.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+#404 hata sayfası yönlendirme kodu
+#ErrorDocument 404 https://code.edu.az/
+
+
+
+RewriteRule ^page-([0-9a-zA-Z-_]+)  menu_details.php?sef=$1 [L,QSA]
